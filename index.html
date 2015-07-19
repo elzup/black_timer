@@ -81,15 +81,21 @@
     };
 
     function changeUmaru() {
-      var rx = Math.floor(Math.random() * 3);
-      var ry = Math.floor(Math.random() * 2);
-      document.getElementById("umaru").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
-      rx = Math.floor(Math.random() * 3);
-      ry = Math.floor(Math.random() * 2);
-      document.getElementById("umaru2").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
-      rx = Math.floor(Math.random() * 3);
-      ry = Math.floor(Math.random() * 2);
-      document.getElementById("umaru3").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+      if (document.getElementById("umaru")) {
+        var rx = Math.floor(Math.random() * 3);
+        var ry = Math.floor(Math.random() * 2);
+        document.getElementById("umaru").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+      }
+      if (document.getElementById("umaru2")) {
+        rx = Math.floor(Math.random() * 3);
+        ry = Math.floor(Math.random() * 2);
+        document.getElementById("umaru2").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+      }
+      if (document.getElementById("umaru3")) {
+        rx = Math.floor(Math.random() * 3);
+        ry = Math.floor(Math.random() * 2);
+        document.getElementById("umaru3").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+      }
     };
 
     function getTimeStr(time) {
