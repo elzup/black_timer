@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 # compiled
 /public/css/*.css
@@ -7,3 +8,11 @@
 
 # npm
 npm-debug.log
+=======
+node_modules/
+
+*.css
+*.css.map
+*.js
+*.html
+>>>>>>> 5003360... :art: create structur
