@@ -19,7 +19,7 @@ $ = require('gulp-load-plugins')()
 config =
   jade:
     source: './src/jade'
-    watch: 'src/jade/*.jade'
+    watch: 'src/jade/**/*.jade'
     destination: './'
     config:
       pretty: true

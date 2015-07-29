@@ -1,10 +1,5 @@
 
 
-setInterval 'changeUmaru()', 2000
-setTimeout "location.reload()", 10 * 60 * 1000
-(document.getElementById "limitTime").innerHTML = getTimeStr(limitTime)
-
-
 # GET リクエストのパラメータの取得
 @get_parameters = ->
   query = window.location.search.substring(1)
@@ -16,10 +11,19 @@ setTimeout "location.reload()", 10 * 60 * 1000
   params
 
 
-params = @get_parameters
+params = @get_parameters()
 limitTime = new Date(2015, 7 - 1, 29, 23, 0, 0)
 
 console.log params
+app = angular.module 'timer', ['$interval']
+app.controller 'timerController', ->
+  @names = 'ELZUP Taki Kawasumi'
+  @loop = ->
+    $interval ->
+      console.log "hoge"
+      , 1000
+  @loop()
+
 
 SECOND_MILLISECOND = 1000
 MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND
@@ -39,14 +43,14 @@ secondDistance = (diff) ->
 millisecondDistance = (diff) ->
   dst.getTime() - src.getTime()
 
-showClock ->
+showClock = ->
   nowTime = new Date()
   msg = getTimeStr(nowTime)
   msg2 = getTimeStr2(limitTime, nowTime)
   document.getElementById("clock").innerHTML = msg
   document.getElementById("leastClock").innerHTML = msg2
 
-changeUmaru ->
+changeUmaru = ->
   if document.getElementById("umaru")
     rx = Math.floor(Math.random() * 3)
     ry = Math.floor(Math.random() * 2)
@@ -75,4 +79,9 @@ getTimeStr2 = (src, dst) ->
 
 c2 = (a) ->
   ("0" + a).slice(-2)
+
+document.onload = ->
+  setInterval 'changeUmaru()', 2000
+  setTimeout "location.reload()", 10 * 60 * 1000
+  (document.getElementById "limitTime").innerHTML = getTimeStr(limitTime)
 
