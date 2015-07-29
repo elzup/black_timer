@@ -1,8 +1,8 @@
 
-window.onload = ->
-    setInterval 'changeUmaru()', 2000
-    setTimeout "location.reload()", 10 * 60 * 1000
-    (document.getElementById "limitTime").innerHTML = getTimeStr(limitTime)
+
+setInterval 'changeUmaru()', 2000
+setTimeout "location.reload()", 10 * 60 * 1000
+(document.getElementById "limitTime").innerHTML = getTimeStr(limitTime)
 
 
 # GET リクエストのパラメータの取得
@@ -19,7 +19,7 @@ window.onload = ->
 params = @get_parameters
 limitTime = new Date(2015, 7 - 1, 29, 23, 0, 0)
 
-conso.log params
+console.log params
 
 SECOND_MILLISECOND = 1000
 MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND

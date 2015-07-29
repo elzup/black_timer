@@ -9,19 +9,19 @@ link(rel="stylesheet" href="css/style.css" type="text/css" media="screen" charse
 script(src="js/script.js")
 
 body
-  #wrapper
+  (id="wrapper")
     h1
       span.name ELZUP Taki Kawasumi
       | Alive
       span.white or
       span.red Dead?
       p Time:
-        span#clock
+        span(id="clock")
         p Limit:
-        span#limitTime
-        p#limit ☠:
-        span#leastClock
+        span(id="limitTime")
+        p(id="limit") ☠:
+        span(id="leastClock")
       div.flex
-        div#umaru
-        div#umaru2
-        <!-- div#umaru3 -->
+        div(id="umaru")
+        div(id="umaru2")
+        # div(id="umaru3")

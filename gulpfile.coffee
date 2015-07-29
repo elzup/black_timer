@@ -38,7 +38,7 @@ config =
   stylus:
     source: './src/stylus'
     watch: 'src/stylus/**/*.styl'
-    destination: './css'
+    destination: './css/'
   sass:
     source: './src/sass'
     watch: './src/sass/**/*.sass'
