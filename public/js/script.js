@@ -1,6 +1,6 @@
-window.onload = function() {
-    setInterval('showClock()',1000);
-    setInterval('changeUmaru()',2000);
+window.onload = function () {
+    setInterval('showClock()', 1000);
+    setInterval('changeUmaru()', 2000);
     setTimeout("location.reload()", 10 * 60 * 1000);
     document.getElementById("limitTime").innerHTML = getTimeStr(limitTime);
 };
@@ -13,8 +13,8 @@ var SECOND_MILLISECOND = 1000,
     YEAR_MILLISECOND = 365 * DAY_MILLISECOND;
 
 var dateDistance = function (diff) {
-    return Math.floor(diff % YEAR_MILLISECOND / DAY_MILLISECOND)
-},
+        return Math.floor(diff % YEAR_MILLISECOND / DAY_MILLISECOND)
+    },
     hourDistance = function (diff) {
         return Math.floor(diff % DAY_MILLISECOND / HOUR_MILLISECOND)
     },
@@ -70,4 +70,3 @@ function getTimeStr2(src, dst) {
 function c2(a) {
     return ("0" + a).slice(-2);
 }
-
