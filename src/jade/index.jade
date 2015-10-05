@@ -4,23 +4,26 @@ html
     meta(charset='UTF-8')
     title 論文Timer
 link(href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css')
+//- TODO: reafactor urls
 link(rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8")
 script(src="js/script.js")
-script(src="")
+//- TODO: react.js 実装
+//- script(src="/components/react/react.min.js")
 body
   #wrapper
-    h1
-      span.name ELZUP Taki Kawasumi
-      | Alive
-      span.white or
-      span.red Dead?
-      p Time:
-        span#clock
-        p Limit:
-        span#limitTime
-        p#limit ☠:
-        span#leastClock
-      div.flex
-        div#umaru
-        div#umaru2
-        <!-- div#umaru3 -->
+    #app
+      h1
+        span.name ELZUP Taki Kawasumi
+        | Alive
+        span.white or
+        span.red Dead?
+        p Time:
+          span#clock
+          p Limit:
+          span#limitTime
+          p#limit ☠:
+          span#leastClock
+        .flex
+          #umaru
+          #umaru2
+          <!-- div#umaru3 -->
