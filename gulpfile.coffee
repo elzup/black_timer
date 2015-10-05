@@ -23,12 +23,6 @@ config =
     destination: './public'
     config:
       pretty: true
-  coffee:
-    source: './src/coffee'
-    watch: 'src/coffee/**/*.coffee'
-    destination: './public/js'
-    option:
-      bare: true
   stylus:
     source: './src/stylus'
     watch: 'src/stylus/**/*.styl'
@@ -50,14 +44,6 @@ gulp.task 'jade', ->
     .on 'error', handleError
     .pipe gulp.dest config.jade.destination
 
-# tasks coffee
-gulp.task 'coffee', ->
-  gulp
-    .src config.coffee.watch
-    .pipe $.coffee()
-    .on 'error', handleError
-    .pipe gulp.dest config.coffee.destination
-
 # tasks stylus
 gulp.task "stylus", ->
   gulp
@@ -74,9 +60,8 @@ gulp.task "stylus", ->
 
 # watch
 gulp.task 'watch', ->
-  gulp.watch config.coffee.watch, ['coffee']
   gulp.watch config.stylus.watch, ['stylus']
   gulp.watch config.jade.watch, ['jade']
 
 #load
-gulp.task 'default', ["coffee", "stylus", "jade"]
+gulp.task 'default', ["stylus", "jade"]

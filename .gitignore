@@ -2,7 +2,7 @@
 # compiled
 /public/css/*.css
 /public/css/*.css.map
-/public/js/*.js
+# /public/js/*.js
 /public/*.html
 
 # npm
