@@ -1,18 +1,14 @@
 
-<<<<<<< HEAD
-
 # compiled
 /public/css/*.css
 /public/css/*.css.map
 /public/js/*.js
+/public/*.html
 
 # npm
-npm-debug.log
-=======
-node_modules/
+/npm-debug.log
+/node_modules/
 
-*.css
-*.css.map
-*.js
-*.html
->>>>>>> 5003360... :art: create structur
+# bower
+/public/components/
+
