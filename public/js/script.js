@@ -1,5 +1,11 @@
 var momentLimit;
-// limit target date
+
+// constains
+var TIME_FORMAT = "MM-DD HH:mm:ss";
+var REMAINING_TIME_FORMAT = '%dDays %02d:%02d:%02d'; // call "Days", "Hour", "Minutes", "Seconds"
+
+var UPDATE_IMAGE_INTERVAL = 5000; // ms
+var PAGE_RELOAD_INTERVAL  = 10 * 60 * 1000; // ms, 10 minutes
 
 window.onload = function () {
     initializeRender();
@@ -8,56 +14,58 @@ window.onload = function () {
 
 function setupIntervals() {
     // repeat every 1sec
-    setInterval('showClock()', 1000);
+    setInterval('updateClock()', 1000);
 
     // repeat every 2sec
-    // TODO: constans
-    setInterval('changeUmaru()', 2000);
+    setInterval('updateImage()', UPDATE_IMAGE_INTERVAL);
 
     // page reload every 1hour for sync shifted time
-    setTimeout("location.reload()", 10 * 60 * 1000);
+    setTimeout("location.reload()", PAGE_RELOAD_INTERVAL);
 }
 
 function initializeRender() {
     // TODO: from REST param
     momentLimit = moment('2015-10-08 00:00:00');
-    $("#limitTime").html(momentLimit.format("MM-DD HH:mm:ss"));
+    $("#limitTime").html(momentLimit.format(TIME_FORMAT));
     $("#name").html("Sibmeu");
-
 }
 
-function showClock() {
+function updateClock() {
     var momentNow = moment();
-    // TODO: to constains
-    var msg = momentNow.format("MM-DD HH:mm:ss");
-    var msg2 = getTimeStr2(momentNow, momentLimit);
+    var nowTimeStr = momentNow.format(TIME_FORMAT);
+    var leastTimeStr = toDiffTimeStr(momentNow, momentLimit);
 
     // udpate view
-    $("#clock").html(msg);
-    $("#leastClock").html(msg2);
+    $("#clock").html(nowTimeStr);
+    $("#leastClock").html(leastTimeStr);
 };
 
-function changeUmaru() {
+function updateImage() {
     if ($("#umaru")) {
         var rx = Math.floor(Math.random() * 3);
         var ry = Math.floor(Math.random() * 2);
-        $("#umaru").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru").css({
+            'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
+            });
     }
     if ($("#umaru2")) {
         rx = Math.floor(Math.random() * 3);
         ry = Math.floor(Math.random() * 2);
-        $("#umaru2").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru2").css({
+            'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
+            });
     }
     if ($("#umaru3")) {
         rx = Math.floor(Math.random() * 3);
         ry = Math.floor(Math.random() * 2);
-        $("#umaru3").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru3").css({
+            'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
+            });
     }
 };
 
-// TODO: rename
-function getTimeStr2(momentSource, momentTarget) {
-    return '%dDays %02d:%02d:%02d'.format(
+function toDiffTimeStr(momentSource, momentTarget) {
+    return REMAINING_TIME_FORMAT.format(
         momentTarget.diff(momentSource, 'days'),
         momentTarget.diff(momentSource, 'hours'),
         momentTarget.diff(momentSource, 'minutes'),
