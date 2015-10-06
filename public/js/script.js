@@ -4,7 +4,7 @@ window.onload = function () {
     setTimeout("location.reload()", 10 * 60 * 1000);
     document.getElementById("limitTime").innerHTML = getTimeStr(limitTime);
 };
-var limitTime = new Date(2015, 7 - 1, 29, 23, 0, 0);
+var limitTime = new Date(2015, 10 - 1, 8, 0, 0, 0);
 var SECOND_MILLISECOND = 1000,
     MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
     HOUR_MILLISECOND = 60 * MINUTE_MILLISECOND,
