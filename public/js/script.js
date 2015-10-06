@@ -8,10 +8,13 @@ window.onload = function () {
 
     // page reload every 1hour for sync shifted time
     setTimeout("location.reload()", 10 * 60 * 1000);
-    document.getElementById("limitTime").innerHTML = getTimeStr(limitTime);
+
+    // TODO: from REST param
+    momentLimit = moment('2015-10-08 00:00:00');
+    document.getElementById("limitTime").innerHTML = momentLimit.format("MM-DD HH:mm:ss");
 };
+var momentLimit;
 // limit target date
-var limitTime = new Date(2015, 10 - 1, 8, 0, 0, 0);
 var SECOND_MILLISECOND = 1000,
     MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
     HOUR_MILLISECOND = 60 * MINUTE_MILLISECOND,
@@ -19,25 +22,11 @@ var SECOND_MILLISECOND = 1000,
     WEEK_MILLISECOND = 7 * DAY_MILLISECOND,
     YEAR_MILLISECOND = 365 * DAY_MILLISECOND;
 
-var dateDistance = function (diff) {
-        return Math.floor(diff % YEAR_MILLISECOND / DAY_MILLISECOND)
-    },
-    hourDistance = function (diff) {
-        return Math.floor(diff % DAY_MILLISECOND / HOUR_MILLISECOND)
-    },
-    minuteDistance = function (diff) {
-        return Math.floor(diff % HOUR_MILLISECOND / MINUTE_MILLISECOND)
-    },
-    secondDistance = function (diff) {
-        return Math.floor(diff % MINUTE_MILLISECOND / SECOND_MILLISECOND)
-    },
-    millisecondDistance = function (diff) {
-        return dst.getTime() - src.getTime()
-    };
 function showClock() {
-    var nowTime = new Date();
-    var msg = getTimeStr(nowTime);
-    var msg2 = getTimeStr2(limitTime, nowTime);
+    var momentNow = moment();
+    // TODO: to constains
+    var msg = momentNow.format("MM-DD HH:mm:ss");
+    var msg2 = getTimeStr2(momentNow, momentLimit);
     document.getElementById("clock").innerHTML = msg;
     document.getElementById("leastClock").innerHTML = msg2;
 };
@@ -60,21 +49,13 @@ function changeUmaru() {
     }
 };
 
-function getTimeStr(time) {
-    var nowDate = time.getDate();
-    var nowMonth = time.getMonth() + 1;
-    var nowHour = time.getHours();
-    var nowMin = time.getMinutes();
-    var nowSec = time.getSeconds();
-    return c2(nowMonth) + "/" + c2(nowDate) + " " + c2(nowHour) + ":" + c2(nowMin) + ":" + c2(nowSec);
+// TODO: rename
+function getTimeStr2(momentSource, momentTarget) {
+    return '%dDays %02d:%02d:%02d'.format(
+        momentTarget.diff(momentSource, 'days'),
+        momentTarget.diff(momentSource, 'hours'),
+        momentTarget.diff(momentSource, 'minutes'),
+        momentTarget.diff(momentSource, 'seconds')
+    );
 }
 
-function getTimeStr2(src, dst) {
-    var diff = src.getTime() - dst.getTime();
-    return c2(dateDistance(diff)) + "day " + c2(hourDistance(diff)) + ":" + c2(minuteDistance(diff)) + ":" + c2(secondDistance(diff));
-}
-
-// 0埋め
-function c2(a) {
-    return ("0" + a).slice(-2);
-}
