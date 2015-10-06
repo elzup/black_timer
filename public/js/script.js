@@ -1,4 +1,12 @@
+var momentLimit;
+// limit target date
+
 window.onload = function () {
+    initializeRender();
+    setupIntervals();
+};
+
+function setupIntervals() {
     // repeat every 1sec
     setInterval('showClock()', 1000);
 
@@ -8,13 +16,15 @@ window.onload = function () {
 
     // page reload every 1hour for sync shifted time
     setTimeout("location.reload()", 10 * 60 * 1000);
+}
 
+function initializeRender() {
     // TODO: from REST param
     momentLimit = moment('2015-10-08 00:00:00');
     $("#limitTime").html(momentLimit.format("MM-DD HH:mm:ss"));
-};
-var momentLimit;
-// limit target date
+    $("#name").html("Sibmeu");
+
+}
 
 function showClock() {
     var momentNow = moment();
