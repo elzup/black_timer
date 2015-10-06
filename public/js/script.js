@@ -15,12 +15,6 @@ window.onload = function () {
 };
 var momentLimit;
 // limit target date
-var SECOND_MILLISECOND = 1000,
-    MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
-    HOUR_MILLISECOND = 60 * MINUTE_MILLISECOND,
-    DAY_MILLISECOND = 24 * HOUR_MILLISECOND,
-    WEEK_MILLISECOND = 7 * DAY_MILLISECOND,
-    YEAR_MILLISECOND = 365 * DAY_MILLISECOND;
 
 function showClock() {
     var momentNow = moment();
