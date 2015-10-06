@@ -1,4 +1,5 @@
 var momentLimit;
+var params;
 
 // constains
 var TIME_FORMAT = "MM-DD HH:mm:ss";
@@ -8,9 +9,18 @@ var UPDATE_IMAGE_INTERVAL = 5000; // ms
 var PAGE_RELOAD_INTERVAL  = 10 * 60 * 1000; // ms, 10 minutes
 
 window.onload = function () {
+    initializeParams();
     initializeRender();
     setupIntervals();
 };
+
+function initializeParams() {
+    params = (new Url).query;
+    // optional value set
+    if (params['un'] == null) {
+        params['un'] = 2;
+    }
+}
 
 function setupIntervals() {
     // repeat every 1sec
@@ -25,11 +35,12 @@ function setupIntervals() {
 
 function initializeRender() {
     // TODO: from REST param
-    momentLimit = moment('2015-10-08 00:00:00');
+    momentLimit = moment(params['end-time']);
+    console.log(momentLimit);
     $("#limitTime").html(momentLimit.format(TIME_FORMAT));
-    $("#name").html("Sibmeu");
+    $("#name").html(params['name']);
     $umaru = $('<div/>').addClass('umaru');
-    for (var i = 0; i < 3; i ++) {
+    for (var i = 0; i < params['un']; i ++) {
         $('#umaru-box').append($umaru.clone());
     }
 }
@@ -57,9 +68,9 @@ function updateImage() {
 function toDiffTimeStr(momentSource, momentTarget) {
     return REMAINING_TIME_FORMAT.format(
         momentTarget.diff(momentSource, 'days'),
-        momentTarget.diff(momentSource, 'hours'),
-        momentTarget.diff(momentSource, 'minutes'),
-        momentTarget.diff(momentSource, 'seconds')
+        momentTarget.diff(momentSource, 'hours') % 24,
+        momentTarget.diff(momentSource, 'minutes') % 60,
+        momentTarget.diff(momentSource, 'seconds') % 60
     );
 }
 
