@@ -28,6 +28,10 @@ function initializeRender() {
     momentLimit = moment('2015-10-08 00:00:00');
     $("#limitTime").html(momentLimit.format(TIME_FORMAT));
     $("#name").html("Sibmeu");
+    $umaru = $('<div/>').addClass('umaru');
+    for (var i = 0; i < 3; i ++) {
+        $('#umaru-box').append($umaru.clone());
+    }
 }
 
 function updateClock() {
@@ -38,31 +42,17 @@ function updateClock() {
     // udpate view
     $("#clock").html(nowTimeStr);
     $("#leastClock").html(leastTimeStr);
-};
+}
 
 function updateImage() {
-    if ($("#umaru")) {
+    $('.umaru').each(function() {
         var rx = Math.floor(Math.random() * 3);
         var ry = Math.floor(Math.random() * 2);
-        $("#umaru").css({
+        $(this).css({
             'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
-            });
-    }
-    if ($("#umaru2")) {
-        rx = Math.floor(Math.random() * 3);
-        ry = Math.floor(Math.random() * 2);
-        $("#umaru2").css({
-            'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
-            });
-    }
-    if ($("#umaru3")) {
-        rx = Math.floor(Math.random() * 3);
-        ry = Math.floor(Math.random() * 2);
-        $("#umaru3").css({
-            'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
-            });
-    }
-};
+        });
+    });
+}
 
 function toDiffTimeStr(momentSource, momentTarget) {
     return REMAINING_TIME_FORMAT.format(
