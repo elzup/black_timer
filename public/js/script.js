@@ -1,9 +1,16 @@
 window.onload = function () {
+    // repeat every 1sec
     setInterval('showClock()', 1000);
+
+    // repeat every 2sec
+    // TODO: constans
     setInterval('changeUmaru()', 2000);
+
+    // page reload every 1hour for sync shifted time
     setTimeout("location.reload()", 10 * 60 * 1000);
     document.getElementById("limitTime").innerHTML = getTimeStr(limitTime);
 };
+// limit target date
 var limitTime = new Date(2015, 10 - 1, 8, 0, 0, 0);
 var SECOND_MILLISECOND = 1000,
     MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND,
@@ -67,6 +74,7 @@ function getTimeStr2(src, dst) {
     return c2(dateDistance(diff)) + "day " + c2(hourDistance(diff)) + ":" + c2(minuteDistance(diff)) + ":" + c2(secondDistance(diff));
 }
 
+// 0埋め
 function c2(a) {
     return ("0" + a).slice(-2);
 }
