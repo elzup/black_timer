@@ -11,7 +11,7 @@ window.onload = function () {
 
     // TODO: from REST param
     momentLimit = moment('2015-10-08 00:00:00');
-    document.getElementById("limitTime").innerHTML = momentLimit.format("MM-DD HH:mm:ss");
+    $("#limitTime").html(momentLimit.format("MM-DD HH:mm:ss"));
 };
 var momentLimit;
 // limit target date
@@ -21,25 +21,27 @@ function showClock() {
     // TODO: to constains
     var msg = momentNow.format("MM-DD HH:mm:ss");
     var msg2 = getTimeStr2(momentNow, momentLimit);
-    document.getElementById("clock").innerHTML = msg;
-    document.getElementById("leastClock").innerHTML = msg2;
+
+    // udpate view
+    $("#clock").html(msg);
+    $("#leastClock").html(msg2);
 };
 
 function changeUmaru() {
-    if (document.getElementById("umaru")) {
+    if ($("#umaru")) {
         var rx = Math.floor(Math.random() * 3);
         var ry = Math.floor(Math.random() * 2);
-        document.getElementById("umaru").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
     }
-    if (document.getElementById("umaru2")) {
+    if ($("#umaru2")) {
         rx = Math.floor(Math.random() * 3);
         ry = Math.floor(Math.random() * 2);
-        document.getElementById("umaru2").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru2").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
     }
-    if (document.getElementById("umaru3")) {
+    if ($("#umaru3")) {
         rx = Math.floor(Math.random() * 3);
         ry = Math.floor(Math.random() * 2);
-        document.getElementById("umaru3").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
+        $("#umaru3").style.backgroundPosition = rx * 266 + "px " + ry * 300 + "px";
     }
 };
 
