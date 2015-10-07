@@ -19,6 +19,8 @@ function initializeParams() {
     // optional value set
     if (params['un'] == null) {
         params['un'] = 2;
+    } else if (params['un'] > 6) {
+        params['un'] = 6;
     }
 }
 
@@ -38,7 +40,7 @@ function initializeRender() {
     momentLimit = moment(params['end-time']);
     console.log(momentLimit);
     $("#limitTime").html(momentLimit.format(TIME_FORMAT));
-    $("#name").html(params['name']);
+    $("#name").text(params['name']);
     $umaru = $('<div/>').addClass('umaru');
     for (var i = 0; i < params['un']; i ++) {
         $('#umaru-box').append($umaru.clone());
