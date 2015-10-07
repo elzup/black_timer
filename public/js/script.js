@@ -21,11 +21,9 @@ function initializeParams() {
         addAlert('param "name" is Empty.')
     }
     // optional value set
-    console.log(params['un']);
     var unIsNull = params['un'] == null;
     params['un'] = parseInt(params['un']);
     var unInRange = 0 <= params['un'] && params['un'] <= 6;
-    console.log(isNaN(params['un']), unIsNull, unInRange);
     if (!unIsNull && (isNaN(params['un']) || !unInRange)) {
         addAlert('param "un" is Invalid(' + params['un'] + '). [0 <= un <= 6]')
     }
