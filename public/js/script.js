@@ -17,15 +17,24 @@ window.onload = function () {
 
 function initializeParams() {
     params = (new Url).query;
+    if (params['name'] == null) {
+        // TODO: alert empty name
+    }
     // optional value set
     if (params['un'] == null) {
         params['un'] = 2;
-    } else if (params['un'] > 6) {
-        params['un'] = 6;
     }
-    momentLimit = moment(params['end-time']);
-    // invalid param then limit set after 1 hour
-    if (!momentLimit.isValid()) {
+    if (params['un'] < 0 || 6 < params['un']) {
+        params['un'] = max(0, min(6, params['un']));
+        // TODO: alert invalid un
+    }
+    if (!isNaN(Date.parse(params['end-time'], "yyyy/MM/dd HH:mm:ss"))) {
+        momentLimit = moment(params['end-time']);
+        if (params['end-time'] != null) {
+            // end-time param set and invalid
+            // TODO: alert invalid end-time
+        }
+    } else {
         momentLimit = moment().add(1, 'hour');
     }
 }
