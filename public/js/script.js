@@ -9,11 +9,12 @@ var UPDATE_IMAGE_INTERVAL = 5000; // ms
 var PAGE_RELOAD_INTERVAL  = 10 * 60 * 1000; // ms, 10 minutes
 
 var PARAM_TIME_FORMAT = 'YYYY-MM-DDTHH:mm:ss';
-window.onload = function () {
+$(function() {
     initializeParams();
     initializeRender();
     setupIntervals();
-};
+    eventSetup();
+});
 
 function initializeParams() {
     params = (new Url).query;
@@ -102,6 +103,17 @@ function updateImage() {
             'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
         });
     });
+}
+
+function eventSetup() {
+    $('[data-toggle]').hide();
+    $('html')
+        .mouseover(function() {
+            $('[data-toggle=mouse-on-window]').show();
+        })
+        .mouseout(function() {
+            $('[data-toggle=mouse-on-window]').hide();
+        })
 }
 
 function addAlert(message) {
