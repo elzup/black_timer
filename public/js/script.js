@@ -18,24 +18,31 @@ window.onload = function () {
 function initializeParams() {
     params = (new Url).query;
     if (params['name'] == null) {
-        // TODO: alert empty name
+        addAlert('param "name" is Empty.')
     }
     // optional value set
-    if (params['un'] == null) {
+    console.log(params['un']);
+    params['un'] = parseInt(params['un']);
+    var unIsNull = params['un'] == null;
+    var unInRange = 0 <= params['un'] && params['un'] <= 6;
+    console.log(isNaN(params['un']), unIsNull, unInRange);
+    if (!unIsNull && (isNaN(params['un']) || !unInRange)) {
+        addAlert('param "un" is Invalid(' + params['un'] + '). [0 <= un <= 6]')
+    }
+    if (unIsNull || isNaN(params['un'])) {
         params['un'] = 2;
     }
-    if (params['un'] < 0 || 6 < params['un']) {
-        params['un'] = max(0, min(6, params['un']));
-        // TODO: alert invalid un
+    if (!unInRange) {
+        params['un'] = Math.max(0, Math.min(6, params['un']));
     }
     if (!isNaN(Date.parse(params['end-time'], "yyyy/MM/dd HH:mm:ss"))) {
         momentLimit = moment(params['end-time']);
-        if (params['end-time'] != null) {
-            // end-time param set and invalid
-            // TODO: alert invalid end-time
-        }
     } else {
         momentLimit = moment().add(1, 'hour');
+        if (params['end-time'] != null) {
+            // end-time param set and invalid
+            addAlert('param "end-time" is Invalid(' + params['end-time'] + '). format[YYYY-MM-DD HH:mm:ii]');
+        }
     }
 }
 
@@ -97,4 +104,9 @@ function updateImage() {
             'backgroundPosition': rx * 266 + "px " + ry * 300 + "px"
         });
     });
+}
+
+function addAlert(message) {
+    $alert = $("<div/>").addClass('alert').append($("<p/>").text(message));
+    $("#alerts").append($alert);
 }
