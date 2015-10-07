@@ -4,11 +4,11 @@ var $remainClock, $remainClockD, $remainClockH, $remainClockM, $remainClockS;
 
 // constains
 var TIME_FORMAT = "MM-DD HH:mm:ss";
-var REMAINING_TIME_FORMAT = ''; // call "Days", "Hour", "Minutes", "Seconds"
 
 var UPDATE_IMAGE_INTERVAL = 5000; // ms
 var PAGE_RELOAD_INTERVAL  = 10 * 60 * 1000; // ms, 10 minutes
 
+var PARAM_TIME_FORMAT = 'YYYY-MM-DDTHH:mm:ss';
 window.onload = function () {
     initializeParams();
     initializeRender();
@@ -33,13 +33,13 @@ function initializeParams() {
     if (!unInRange) {
         params['un'] = Math.max(0, Math.min(6, params['un']));
     }
-    if (!isNaN(Date.parse(params['end-time'], "yyyy/MM/dd HH:mm:ss"))) {
+    if (!isNaN(Date.parse(params['end-time']))) {
         momentLimit = moment(params['end-time']);
     } else {
         momentLimit = moment().add(1, 'hour');
         if (params['end-time'] != null) {
             // end-time param set and invalid
-            addAlert('param "end-time" is Invalid(' + params['end-time'] + '). format[YYYY-MM-DD HH:mm:ii]');
+            addAlert('param "end-time" is Invalid(' + params['end-time'] + '). format[' + PARAM_TIME_FORMAT + ']');
         }
     }
 }
