@@ -37,9 +37,7 @@ function setupIntervals() {
 }
 
 function initializeRender() {
-    // TODO: from REST param
     momentLimit = moment(params['end-time']);
-    console.log(momentLimit);
     $("#limitTime").html(momentLimit.format(TIME_FORMAT));
     $("#name").text(params['name']);
     $umaru = $('<div/>').addClass('umaru');
@@ -87,9 +85,3 @@ function updateImage() {
         });
     });
 }
-
-function toDiffTimeStr(momentSource, momentTarget) {
-    return REMAINING_TIME_FORMAT.format(
-    );
-}
-
