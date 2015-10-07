@@ -24,6 +24,7 @@
     "moment": "~2.10.6",
     "string-format-js": "~0.1.2",
     "jquery": "~2.1.4",
-    "jsurl": "*"
+    "jsurl": "*",
+    "normalize-css": "normalize.css#~3.0.3"
   }
 }
