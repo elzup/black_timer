@@ -21,7 +21,7 @@ timer defined by rest parameter
 \* require
 
 ```
-start http://localhost:8888/?name=Elzup&end-time=2015-10-07%2023:59:59
+start http://localhost:8888/?name=Elzup&end-time=2015-10-07T23:59:59
 ```
 
 ## Install
