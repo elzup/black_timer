@@ -15,7 +15,7 @@ timer defined by rest parameter
 | key      | description                    | default | example             |
 |----------|--------------------------------|---------|---------------------|
 | \* name  | 締め切りと戦っている人の名前   | -       | Elzup               |
-| end-time | 締め切り                       | 1時間後 | 2015-10-07 23:59:59 |
+| end-time | 締め切り (YYYY-MM-DD HH:mm:ii) | 1時間後 | 2015-10-07 23:59:59 |
 | un       | うまるちゃんの数 (0 <= n <= 6) | 2       | 3                   |
 
 \* require
