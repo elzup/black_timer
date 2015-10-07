@@ -2,7 +2,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "http-server -o"
+    "start": "http-server -o",
+    "build": "npm install;bower install;gulp;echo 'build \\033[0;32msucceeded\\033[0;39m'"
   },
   "devDependencies": {
     "body-parser": "^1.13.2",
