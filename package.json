@@ -1,6 +1,9 @@
 {
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "start": "http-server -o"
+  },
   "devDependencies": {
     "body-parser": "^1.13.2",
     "bower": "^1.5.3",
@@ -16,6 +19,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
+    "http-server": "^0.8.5",
     "jade": "^1.11.0",
     "kouto-swiss": "^0.11.13",
     "morgan": "^1.6.1",
