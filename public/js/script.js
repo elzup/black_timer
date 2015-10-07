@@ -37,7 +37,7 @@ function initializeParams() {
         momentLimit = moment(params['end-time']);
     } else {
         momentLimit = moment().add(1, 'hour');
-        if (params['end-time'] != null) {
+        if (params['end-time'] != null && params['end-time'] != '') {
             // end-time param set and invalid
             addAlert('param "end-time" is Invalid(' + params['end-time'] + '). format[' + PARAM_TIME_FORMAT + ']');
         }

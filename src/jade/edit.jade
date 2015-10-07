@@ -1,0 +1,26 @@
+doctype HTML
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    title BlackTimer
+    link(href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css')
+    link(rel="stylesheet" href="/css/style.css" type="text/css" media="screen" charset="utf-8")
+  body
+    #wrapper
+      h1 BlackTimer Config
+      form(action='/' method='get')
+        fieldset
+          legend config form
+          p
+            label(for='name-form') Name
+            input(type='text' name='name' id='form-name' size=10 maxlength=30 required)
+            strong
+              abbr(title='required') *
+          p
+            label(for='form-end-time') TimeLimit
+            input(type='datetime-local' name='end-time' id='form-end-time' min='2015-01-01T00:00' max='2100-12-31T23:59')
+          p
+            label(for='form-un') UmaruCount
+            input(type='number' name='un' id='form-un' min='0' max='6' value=2)
+          p
+            input(type='submit' value='Submit')
