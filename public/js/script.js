@@ -23,6 +23,11 @@ function initializeParams() {
     } else if (params['un'] > 6) {
         params['un'] = 6;
     }
+    momentLimit = moment(params['end-time']);
+    // invalid param then limit set after 1 hour
+    if (!momentLimit.isValid()) {
+        momentLimit = moment().add(1, 'hour');
+    }
 }
 
 function setupIntervals() {
@@ -37,7 +42,6 @@ function setupIntervals() {
 }
 
 function initializeRender() {
-    momentLimit = moment(params['end-time']);
     $("#limitTime").html(momentLimit.format(TIME_FORMAT));
     $("#name").text(params['name']);
     $umaru = $('<div/>').addClass('umaru');
