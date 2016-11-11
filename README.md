@@ -1,9 +1,11 @@
-BlackClock
+BlackTimer
 ===
 
-締め切りと戦っている人を支援するタイマー
+![](https://raw.githubusercontent.com/elzup/black_timer/master/ScreenShot/screenshot-black-timer.gif)
+![](https://raw.githubusercontent.com/elzup/black_timer/master/ScreenShot/screenshot-black-timer-config.gif)
 
-## Description
+## 締め切りと戦っている人を支援する
+
 
 ## Requirement
 
@@ -12,13 +14,13 @@ BlackClock
 ## Usage
 timer defined by rest parameter
 
-| key      | description                    | default | example             |
+| key(\*required)      | description                    | default | example             |
 |----------|--------------------------------|---------|---------------------|
 | \* name  | 締め切りと戦っている人の名前   | -       | Elzup               |
 | end-time | 締め切り (YYYY-MM-DDTHH:mm:ii) | 1時間後 | 2015-10-07T23:59:59 |
 | un       | うまるちゃんの数 (0 <= n <= 6) | 2       | 3                   |
 
-\* require
+
 
 ```
 start http://localhost:8888/?name=Elzup&end-time=2015-10-07T23:59:59
@@ -40,4 +42,4 @@ npm start
 
 ## Author
 
-[elzzup](https://github.com/elzzup)
+[elzup](https://github.com/elzup)
