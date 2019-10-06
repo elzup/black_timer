@@ -20,11 +20,11 @@
     "gulp-sourcemaps": "1.12.1",
     "gulp-stylus": "2.7.0",
     "gulp-util": "3.0.8",
-    "http-server": "0.8.5",
+    "http-server": "0.11.1",
     "jade": "1.11.0",
-    "kouto-swiss": "0.11.14",
+    "kouto-swiss": "0.14.0",
     "morgan": "1.9.1",
-    "react": "0.13.3",
+    "react": "0.14.9",
     "serve-favicon": "2.5.0"
   }
 }
