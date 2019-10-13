@@ -22,7 +22,7 @@
     "gulp-util": "3.0.8",
     "http-server": "0.8.5",
     "jade": "1.11.0",
-    "kouto-swiss": "0.11.14",
+    "kouto-swiss": "1.1.0",
     "morgan": "1.9.1",
     "react": "0.13.3",
     "serve-favicon": "2.5.0"
