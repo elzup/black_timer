@@ -24,7 +24,7 @@
     "jade": "1.11.0",
     "kouto-swiss": "0.11.14",
     "morgan": "1.9.1",
-    "react": "0.13.3",
+    "react": "16.10.2",
     "serve-favicon": "2.5.0"
   }
 }
